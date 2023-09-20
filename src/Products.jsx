@@ -1,9 +1,15 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import SingleProduct from './SingleProduct';
 
 const Products = () => {
+    let productData = useLoaderData();
+    let {products}=productData;
     return (
-        <div>
-            <h1 className='text-2xl'>Products</h1>
+        <div className='grid grid-cols-3'>
+            {
+                products.map(data => <SingleProduct key={data.id} data={data}></SingleProduct>)
+            }
         </div>
     );
 };
